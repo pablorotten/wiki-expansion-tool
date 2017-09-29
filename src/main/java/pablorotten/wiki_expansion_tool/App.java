@@ -16,8 +16,10 @@ public class App
 //  	initialTerms.add("Earth_(classical_element)");
 //    initialTerms.add("Air_(classical_element)");
 
-    initialTerms.add("Huelva");
-    initialTerms.add("Granada");
+    initialTerms.add("Wolf");
+    initialTerms.add("Dogggy");
+//    initialTerms.add("Huelva");
+//    initialTerms.add("Granada");
 //    initialTerms.add("Seville");
 //    initialTerms.add("Cádiz");
 //    initialTerms.add("Dos Hermanas");
@@ -75,5 +77,12 @@ public class App
 //      for(TreeNode<Notion> notion : notionList) {
 //        System.out.println(notion);;
 //      }
+    }
+    public static String getHelloWorld() {  
+      return "Hello World";  
+    }
+  
+    public static String getHelloWorld2() {  
+      return "Hello World 2";  
     }
 }

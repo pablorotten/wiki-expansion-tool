@@ -108,27 +108,27 @@ public class Controller {
      * @return An array of Notions with the info found in the Wiki API
      * @throws IOException
      */
-    private static List<Notion> createNotions(List<String> initialTerms) throws IOException {
-      List<Notion> initialNotions = new ArrayList<Notion>();
-      
-      for(String title : initialTerms) {
-        Notion initialNotion = ServicesWiki.createNotion(title);
-        if(initialNotion != null)
-          initialNotions.add(initialNotion);
-      }
-      return initialNotions;
-    } 
+  public static List<Notion> createNotions(List<String> initialTerms) throws IOException {
+    List<Notion> initialNotions = new ArrayList<Notion>();
+    
+    for(String title : initialTerms) {
+      Notion initialNotion = ServicesWiki.createNotion(title);
+      if(initialNotion != null)
+        initialNotions.add(initialNotion);
+    }
+    return initialNotions;
+  } 
     
     /**
      * Find and returns the categories of a given Notion in the Wiki API
      * @param notion NotionNode which Notion is goun
      * @throws IOException
      */
-    private static ArrayList<Notion> expandCategories(Notion notion) throws IOException {
-      ArrayList<Notion> categoryNotionsExpanded = new ArrayList<Notion>();
-      categoryNotionsExpanded = ServicesWiki.expandNotionCategories(notion);
-      return categoryNotionsExpanded;
-    }
+  public static ArrayList<Notion> expandCategories(Notion notion) throws IOException {
+    ArrayList<Notion> categoryNotionsExpanded = new ArrayList<Notion>();
+    categoryNotionsExpanded = ServicesWiki.expandNotionCategories(notion);
+    return categoryNotionsExpanded;
+  }
 
     /**
      * Expands a given CategoryNotion TreeNode. Search in wikipedia all the pages under that Category, transform them into PageNotion TreeNodes
@@ -137,11 +137,11 @@ public class Controller {
      * @throws JSONException
      * @throws IOException
      */
-    private static ArrayList<Notion> expandPages(Notion categoryNotion) throws JSONException, IOException{
-      ArrayList<Notion> newNotions = new ArrayList<Notion>();
-      
-      if(categoryNotion.getType() == NotionType.CATEGORY) {
-        newNotions = ServicesWiki.getNotionPagesInCategory(categoryNotion);              
+  public static ArrayList<Notion> expandPages(Notion categoryNotion) throws JSONException, IOException{
+    ArrayList<Notion> newNotions = new ArrayList<Notion>();
+    
+    if(categoryNotion.getType() == NotionType.CATEGORY) {
+      newNotions = ServicesWiki.getNotionPagesInCategory(categoryNotion);              
 //          if(!newNotions.isEmpty()) {
 //            List <TreeNode<Notion>> categoryTreenodeNotionChildrens = categoryNotion.children;
 //            for(Notion newNotion : newNotions) {
@@ -150,19 +150,19 @@ public class Controller {
 //              }           
 //            }
 //          }
-      }
-      else {
-        System.err.println(categoryNotion.getTitle() + " Must be a Category Notion");        
-      }
-      return newNotions;  
     }
+    else {
+      System.err.println(categoryNotion.getTitle() + " Must be a Category Notion");        
+    }
+    return newNotions;  
+  }
     
   /**
    * Merges a path with the Main Tree. They must have the same root (Common category)  
    * @param notionTree Main Tree
    * @param pathTree Path to merge
    */
-	private static void addPathToTree(TreeNode<Notion> notionTree, TreeNode<Notion> pathTree) {  
+  public static void addPathToTree(TreeNode<Notion> notionTree, TreeNode<Notion> pathTree) {  
 	  //check if both tree and path has the same root
 	  if(pathTree.data.equals(notionTree.data)) {
 	    //get a pathNode
@@ -194,7 +194,7 @@ public class Controller {
 	 * @param notionTrees trees to iterate
 	 * @return list of commonCategories found
 	 */
-  private static Set<Notion> findCommonAncestors(List<TreeNode<Notion>> notionTrees){
+  public static Set<Notion> findCommonAncestors(List<TreeNode<Notion>> notionTrees){
     TreeNode<Notion> firstNotionTree = notionTrees.get(0);
     Set<Notion> commonCategories = new HashSet<Notion>();
       
@@ -223,7 +223,7 @@ public class Controller {
    * @return
    * @throws IOException
    */
-  private static ArrayList<TreeNode<Notion>> getNotionNodesByLevel(TreeNode <Notion> notionTree, int level) throws IOException {        
+  public static ArrayList<TreeNode<Notion>> getNotionNodesByLevel(TreeNode <Notion> notionTree, int level) throws IOException {        
     ArrayList <TreeNode<Notion>> notionNodesByLevel = new ArrayList<TreeNode<Notion>>();
     for (TreeNode<Notion> notionNode : notionTree) {
       if (level == notionNode.getLevel()){
@@ -240,7 +240,7 @@ public class Controller {
    * @param commonCategoryNotion
    * @return
    */
-  private static TreeNode<Notion> pathToCategory(TreeNode<Notion> expandedNotionTree, Notion commonCategoryNotion) {
+  public static TreeNode<Notion> pathToCategory(TreeNode<Notion> expandedNotionTree, Notion commonCategoryNotion) {
     TreeNode<Notion> expandedNotionTreeNode = expandedNotionTree.findTreeNode(commonCategoryNotion);
     TreeNode<Notion> pathTreeNode = new TreeNode<Notion>(expandedNotionTreeNode.data);
     TreeNode<Notion> pathTreeNodeIterator = pathTreeNode;
@@ -257,14 +257,14 @@ public class Controller {
    * Prints a tree
    * @param tree
    */
-  private static void printTree(TreeNode<Notion> tree) {
+  public static void printTree(TreeNode<Notion> tree) {
     for (TreeNode<Notion> node : tree) {
         String indent = createIndent(node.getLevel());
         System.out.println(indent + node.data.getTitle());
     }
   }
   
-  private static String createIndent(int depth) {
+  public static String createIndent(int depth) {
     StringBuilder sb = new StringBuilder();
     for (int i = 0; i < depth; i++) {
       sb.append("    ");

@@ -15,6 +15,7 @@
       Welcome to the WIKIPEDIA EXPANSION TOOL
     </h2>
     <h3>
+    
       Insert your notions and push "Start Wikipedia Expansion" 
     </h3>
   </div>

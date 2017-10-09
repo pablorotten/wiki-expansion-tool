@@ -11,16 +11,18 @@
 <body>
   <br>
   <div style="text-align:center">
+    <h1>
+      Welcomes to the WIKIPEDIA EXPANSION TOOL
+    </h1>
     <h2>
-      Welcome to the WIKIPEDIA EXPANSION TOOL
-    </h2>
+      Now With Jetty!!!
+    </h2>    
     <h3>
-    
       Insert your notions and push "Start Wikipedia Expansion" 
     </h3>
   </div>
   <div>
-    <form name="notions-forms" action="/wiki-expansion-tool/expand" method="post" style="text-align:center">
+    <form name="notions-forms" action="/expand" method="post" style="text-align:center">
       <input name="notion1" type="text" />
       <input name="notion2" type="text" />
       <input name="notion3" type="text" />

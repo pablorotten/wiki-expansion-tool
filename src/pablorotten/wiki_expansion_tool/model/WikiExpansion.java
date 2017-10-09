@@ -225,7 +225,6 @@ public class WikiExpansion {
       if(found)
       	commonCategories.add(notion);
     }
-    
     return commonCategories;
   }
     

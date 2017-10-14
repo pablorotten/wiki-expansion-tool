@@ -26,7 +26,7 @@ public class WikiExpansionController {
   @RequestMapping("/welcome")
   public ModelAndView helloWorld() {
  
-    String message = "<br><div style='text-align:center;'><h3>WIKIPEDIA EXPANSION TOOL :))</h3></div><br><br>";
+    String message = "<br><div style='text-align:center;'><h3>WIKIPEDIA EXPANSION TOOL <3</h3></div><br><br>";
     return new ModelAndView("welcome", "message", message);
   } 
   

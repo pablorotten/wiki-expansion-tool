@@ -6,3 +6,4 @@ pablorotten\Tree\TreeNodeIter$ProcessStages.class
 pablorotten\Tree\TreeNode.class
 pablorotten\wiki_expansion_tool\service\ServicesWiki.class
 pablorotten\wiki_expansion_tool\model\NotionType.class
+pablorotten\wiki_expansion_tool\model\WikiExpansion.class

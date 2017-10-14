@@ -21,8 +21,8 @@
       Insert your notions and push "Start Wikipedia Expansion" 
     </h3>
   </div>
-  <div>
-    <form name="notions-forms" action="/expand" method="post" style="text-align:center">
+  <div>  
+    <form name="notions-forms" action="${pageContext.request.contextPath}/expand" method="post" style="text-align:center">
       <input name="notion1" type="text" />
       <input name="notion2" type="text" />
       <input name="notion3" type="text" />

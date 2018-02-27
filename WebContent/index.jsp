@@ -12,7 +12,7 @@
   <br>
   <div style="text-align:center">
     <h1>
-      Welcome to the WIKIPEDIA EXPANSION TOOL
+      Welcomes to the WIKIPEDIA EXPANSION TOOL
     </h1>
     <h2>
       Now With Jetty!!!

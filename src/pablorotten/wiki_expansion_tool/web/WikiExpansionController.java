@@ -78,7 +78,12 @@ public class WikiExpansionController {
       
       for (TreeNode<Notion> node : expandedNotionTree) {
         String indent = createIndent(node.getLevel());
-        expansionResult += indent + node.data.getTitle() + "<br>";      }
+        expansionResult += indent;
+        if(node.isLeaf())
+            expansionResult += "<b>" + node.data.getTitle() + "</b><br>";
+        else
+            expansionResult += node.data.getTitle() + "<br>";      
+      }
     }  
     
     return new ModelAndView("expand", "expansionResult", expansionResult);

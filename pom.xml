@@ -4,6 +4,7 @@
   <artifactId>wiki-expansion-tool</artifactId>
   <version>0.1.0.TEST</version>
   <packaging>war</packaging>
+  
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
@@ -22,6 +23,12 @@
           <warSourceDirectory>WebContent</warSourceDirectory>
         </configuration>
       </plugin>
+      
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+        
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
@@ -45,6 +52,7 @@
       </plugin>
     </plugins>
   </build>
+  
   <dependencies>
     <dependency>
     <groupId>org.springframework</groupId>
@@ -76,5 +84,11 @@
       <artifactId>json</artifactId>
       <version>20170516</version>
     </dependency>
+    
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>2.9.4</version>
+    </dependency>           
   </dependencies>
 </project>

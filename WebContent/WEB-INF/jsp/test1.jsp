@@ -7,6 +7,8 @@
 <title>Test1</title>
 </head>
 <body>
-test1
+  <div style="font-family: verdana; padding: 10px; border-radius: 10px; font-size: 12px; text-align:center;"> 
+    ${quote}
+  </div>
 </body>
 </html>

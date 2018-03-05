@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import pablorotten.Tree.TreeNode;
 import pablorotten.wiki_expansion_tool.model.Notion;
+import pablorotten.wiki_expansion_tool.model.Quote;
 import pablorotten.wiki_expansion_tool.model.WikiExpansion;
  
 @Controller
@@ -32,8 +34,10 @@ public class WikiExpansionController {
   
   @RequestMapping("/test1")
   public ModelAndView test() {
- 
-    return new ModelAndView("test1");
+    RestTemplate restTemplate = new RestTemplate();
+    Quote quote = restTemplate.getForObject("http://gturnquist-quoters.cfapps.io/api/random", Quote.class);
+    System.out.println(quote);
+    return new ModelAndView("test1", "quote", quote);
   } 
   
   @RequestMapping("/test2")

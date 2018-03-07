@@ -19,8 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import pablorotten.Tree.TreeNode;
 import pablorotten.wiki_expansion_tool.model.Notion;
-import pablorotten.wiki_expansion_tool.model.Quote;
 import pablorotten.wiki_expansion_tool.model.WikiExpansion;
+import pablorotten.wiki_expansion_tool.rest_template_domain.Quote;
  
 @Controller
 public class WikiExpansionController {
@@ -31,13 +31,21 @@ public class WikiExpansionController {
     String message = "<br><div style='text-align:center;'><h3>WIKIPEDIA EXPANSION TOOL <3</h3></div><br><br>";
     return new ModelAndView("welcome", "message", message);
   } 
-  
+
   @RequestMapping("/test1")
   public ModelAndView test() {
     RestTemplate restTemplate = new RestTemplate();
     Quote quote = restTemplate.getForObject("http://gturnquist-quoters.cfapps.io/api/random", Quote.class);
     System.out.println(quote);
     return new ModelAndView("test1", "quote", quote);
+  } 
+  
+  @RequestMapping("/test-rest-template")
+  public ModelAndView testRestTemplate() {
+    RestTemplate restTemplate = new RestTemplate();
+    Quote quote = restTemplate.getForObject("http://gturnquist-quoters.cfapps.io/api/random", Quote.class);
+    System.out.println(quote);
+    return new ModelAndView("test-rest-template", "quote", quote);
   } 
   
   @RequestMapping("/test2")

@@ -16,7 +16,7 @@ import org.json.JSONObject;
 import pablorotten.wiki_expansion_tool.model.Notion;
 import pablorotten.wiki_expansion_tool.model.NotionType;
 
-public class ServicesWiki {
+public class WikiService {
     
   private static String readAll(Reader rd) throws IOException {
     StringBuilder sb = new StringBuilder();

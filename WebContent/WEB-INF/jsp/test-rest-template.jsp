@@ -4,14 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Test1</title>
+<title>Test Rest Template</title>
 </head>
 <body>
   <div style="font-family: verdana; padding: 10px; border-radius: 10px; font-size: 12px; text-align:center;"> 
-    <h1><a href="https://spring.io/guides/gs/consuming-rest/">Spring: Consuming a RESTful Web Service tutorial</a></h1>
-    <p>
-      ${quote}
-    </p>
+    <h1>Testing Rest Template with Wikipedia</h1>
+    ${quote}
   </div>
 </body>
 </html>

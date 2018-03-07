@@ -1,4 +1,8 @@
-# wiki-expansion-tool
+Wiki Expansion Tool
+
+[[TOC]]
+
+# About
 
 This is a Tool to find common categories between different Terms, and expand in order to obtain new related terms.
 
@@ -34,9 +38,7 @@ A small tutorial with all we need to know about the Wikipedia API
 
 * Redirects ([https://www.mediawiki.org/w/api.php?action=help&modules=query%2Bredirect](https://www.mediawiki.org/w/api.php?action=help&modules=query%2Bredirects)[s](https://www.mediawiki.org/w/api.php?action=help&modules=query%2Bredirects))
 
-### Examples
-
-Some query examples, in **yellow** the ones we use
+### Query examples
 
 **Go to page by id**
 
@@ -102,17 +104,33 @@ But if the title we’re looking for ("Catherine z-Jones") is one of the [redire
 
 [https://en.wikipedia.org/w/api.php?action=query&list=categorymembers&prop=categories&cmlimit=max&format=json&cmtitle=Category:1924_births](https://en.wikipedia.org/w/api.php?action=query&list=categorymembers&prop=categories&cmlimit=max&format=json&cmtitle=Category:1924_births)
 
-**Get page info Query and his redirects by ****title**** and redirections in search**
+#### Query examples that we use
+
+**Get page info Query and his redirects by ****title**** and redirections in search. Used for initial notions**
 
 [https://en.wikipedia.org/w/api.php?action=query&prop=info%7Credirects&format=json&titles=Dog&redirects](https://en.wikipedia.org/w/api.php?action=query&prop=info%7Credirects&format=json&titles=Dog&redirects)  
 
-**List categories and info by ****pageid****: limit and !hidden (note that it’s almost the same, but we need a "g" before each of these properties)**
+**List categories and info by ****pageid****: limit and !hidden (note that it’s almost the same, but we need a "g" before each of these properties). Used for get categories of a given notion**
 
 [https://en.wikipedia.org/w/api.php?action=query&generator=categories&prop=info&format=json&gcllimit=max&gclshow=!hidden&pageids=4269567](https://en.wikipedia.org/w/api.php?action=query&generator=categories&prop=info&format=json&gcllimit=max&gclshow=!hidden&pageids=4269567)
 
-**List Pages and Categories under a given category ****pageid**
+**List Pages and Categories under a given category ****pageid****. Used for get the pages under a Category**
 
 [https://en.wikipedia.org/w/api.php?action=query&list=categorymembers&prop=categories&cmlimit=max&format=json&cmpageid=706779](https://en.wikipedia.org/w/api.php?action=query&list=categorymembers&prop=categories&cmlimit=max&format=json&cmpageid=706779) 
+
+### RestTemplate
+
+[https://spring.io/guides/gs/consuming-rest/](https://spring.io/guides/gs/consuming-rest/)
+
+We are going to use RestTemplate to map the rest API and make more consistent and readable the query parsing.
+
+We have the following Domain Classes:
+
+* Get page info and his redirects: **Page **+ **Redirect**
+
+* For list categories of a page: **Category**
+
+* For list Pages and Categories under a given Category: **CategoryMember**
 
 ## Algorithm
 
@@ -132,15 +150,15 @@ But if the title we’re looking for ("Catherine z-Jones") is one of the [redire
 
 4. Return de array of trees
 
-### Problems
+## Issues
 
-#### Wikipedia subcategories → DONE
+### Wikipedia subcategories → DONE
 
 According with this answer [https://stackoverflow.com/a/5785034](https://stackoverflow.com/a/5785034) Wikipedia's categorization system is not a tree. So we could have the problem that by continually following subcategory links you will eventually wind up back where we started.
 
 To solve that, in the loop where we expand the categories of the initialNotionsTrees, in the expandNotionNode() function we have to check if every categoryNotionExpanded is already in the initalNotionTree. If this happens, the repeated categoryNotionExpanded is not added to the initialNotionTree
 
-#### Repeated Notions expansions
+### Repeated Notions expansions
 
 We may expand the same notions different times. For example: two nearby notions that share some categories at the first level, repeated categoryNotions in different expandedNotionTrees, etc. To solve that, we could create the class "NotionCache" with 3 attributes, the notion, the categories expansion and the pages expansion. We create a Map where the key is the notion and the value is the corresponding “NotionCache” object. 
 
@@ -161,30 +179,11 @@ Every time we want to expand a Notion, before launch the query, we search it on 
   </tr>
   <tr>
     <td>3</td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>4</td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>5</td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>6</td>
-    <td></td>
-    <td></td>
+    <td>ArrayList <TreeNode<Notion>> notionTrees</td>
+    <td>List of TreeNodes which root is each initialTerm found in the Wikipedia. Every time that we make an expansion, one nodes level is added to these notionTrees until we found a common category</td>
   </tr>
 </table>
 
-
-List<String> initialTerms → Initial terms entered by the user
-
-ArrayList <TreeNode<Notion>> notionTrees → Create a List of TreeNodes which root is each initialTerm found in the Wilipedia. Every time that we make an expansion, one nodes level is added to these notionTrees until we found a common category
 
 # FRONTEND
 
@@ -193,6 +192,8 @@ Followed that tutorial to buld the project: [http://crunchify.com/simplest-sprin
 And that for the hotdeploy: [https://www.mkyong.com/eclipse/how-to-configure-hot-deploy-in-eclipse/](https://www.mkyong.com/eclipse/how-to-configure-hot-deploy-in-eclipse/)
 
 ## Structure
+
+# 🚧 Work in progress
 
 ## Problems
 

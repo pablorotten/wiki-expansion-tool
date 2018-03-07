@@ -1,4 +1,4 @@
-package pablorotten.wiki_expansion_tool.model;
+package pablorotten.wiki_expansion_tool.rest_template_domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

@@ -11,7 +11,7 @@ import java.util.Set;
 import org.json.JSONException;
 
 import pablorotten.Tree.*;
-import pablorotten.wiki_expansion_tool.service.ServicesWiki;
+import pablorotten.wiki_expansion_tool.service.WikiService;
 /**
  *
  * @author Pablo
@@ -124,7 +124,7 @@ public class WikiExpansion {
     List<Notion> initialNotions = new ArrayList<Notion>();
     
     for(String title : initialTerms) {
-      Notion initialNotion = ServicesWiki.createNotion(title);
+      Notion initialNotion = WikiService.createNotion(title);
       if(initialNotion != null)
         initialNotions.add(initialNotion);
     }
@@ -138,7 +138,7 @@ public class WikiExpansion {
      */
   public static ArrayList<Notion> expandCategories(Notion notion) throws IOException {
     ArrayList<Notion> categoryNotionsExpanded = new ArrayList<Notion>();
-    categoryNotionsExpanded = ServicesWiki.expandNotionCategories(notion);
+    categoryNotionsExpanded = WikiService.expandNotionCategories(notion);
     return categoryNotionsExpanded;
   }
 
@@ -153,7 +153,7 @@ public class WikiExpansion {
     ArrayList<Notion> newNotions = new ArrayList<Notion>();
     
     if(categoryNotion.getType() == NotionType.CATEGORY) {
-      newNotions = ServicesWiki.getNotionPagesInCategory(categoryNotion);              
+      newNotions = WikiService.getNotionPagesInCategory(categoryNotion);              
 //          if(!newNotions.isEmpty()) {
 //            List <TreeNode<Notion>> categoryTreenodeNotionChildrens = categoryNotion.children;
 //            for(Notion newNotion : newNotions) {

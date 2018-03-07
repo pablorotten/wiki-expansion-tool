@@ -17,6 +17,7 @@
     <url-pattern>/welcome</url-pattern>
     <url-pattern>/test1</url-pattern>
     <url-pattern>/test2</url-pattern>
+    <url-pattern>/test-rest-template</url-pattern>
     <url-pattern>/expand</url-pattern>
     <url-pattern>/index</url-pattern>
     <url-pattern>/welcome.html</url-pattern>
